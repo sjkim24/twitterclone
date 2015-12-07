@@ -5,25 +5,30 @@ class TweetsController < ApplicationController
     @tweet.user_id = current_user.id
 
     if @tweet.save
-
-
-
+      redirect_to user_url(current_user.id)
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      render :new
+    end
   end
 
   def new
-
+    @tweet = Tweet.new
+    render :new
   end
 
   def edit
-
+    @tweet = Tweet.find(params[:id])
+    render :edit
   end
 
   def update
-
-  end
-
-  def destroy
-
+    @tweet = Tweet.find(params[:id])
+    if @tweet.update(tweet_params)
+      redirect_to user_url(current_user.id)
+    else
+       flash.now[:errors] = @tweet.errors.full_messages
+    end
   end
 
   private

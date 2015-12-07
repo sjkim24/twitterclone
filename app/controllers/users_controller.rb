@@ -22,6 +22,12 @@ class UsersController < ApplicationController
     render :show
   end
 
+  def destroy
+   @user = User.find(params[:id])
+   @user.destroy
+   redirect_to new_session_url
+  end
+
   private
 
   def user_params
