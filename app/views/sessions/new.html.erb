@@ -3,15 +3,24 @@
     <form action="<%= session_url %>" method="POST">
       <%= render "shared/auth_token" %>
       <input
-        id="user_username"
         type="text"
         name="user[username]"
         placeholder="Username">
       <input
-        id="user_password"
         type="password"
         name="user[password]"
         placeholder="Password">
       <button>Log In</button>
     </form>
+    <form action="<%= session_url %>" method="POST">
+    <%= render "shared/auth_token" %>
+    <input
+      type="hidden"
+      name="user[username]"
+      value="guest">
+    <input type="hidden"
+      name="user[password]"
+      value="password">
+    <button>Login As Guest</button>
+  </form>
 </div>
