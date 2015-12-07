@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       render json: "Wrong username/password"
     else
       login!(user)
-      render json: "Hello #{user.username}"
+      redirect_to user_url(user.id)
     end
   end
 

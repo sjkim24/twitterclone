@@ -5,8 +5,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login! (@user)
-      # redirect_to root_url
-      render json: "Welcome #{@user.username}"
+      redirect_to root_url
     else
       render json: @user.errors.full_messages
     end
@@ -17,9 +16,15 @@ class UsersController < ApplicationController
     render :new
   end
 
+  def show
+    @user = User.find(params[:id])
+    render :show
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:username, :password)
   end
+
 end
