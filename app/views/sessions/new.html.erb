@@ -1,6 +1,6 @@
-<div class="signup">
-  <h1>Sign Up</h2>
-    <form action="<%= users_url %>" method="POST">
+<div class="login">
+  <h1>Log In</h1>
+    <form action="<%= sessions_url %>" method="POST">
       <%= render "shared/auth_token" %>
       <input
         id="user_username"
@@ -11,7 +11,7 @@
         id="user_password"
         type="password"
         name="user[password]"
-          placeholder="Password">
-      <button>Sign Up</button>
+        placeholder="Password">
+      <button>Log In</button>
     </form>
 </div>
