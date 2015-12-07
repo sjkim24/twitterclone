@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
     )
 
     if user.nil?
-      render json: "Wrong username/password"
+      flash.now[:errors] = ["Wrong username/password."]
+      render :new
     else
       login!(user)
       redirect_to user_url(user.id)
