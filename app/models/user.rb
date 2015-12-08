@@ -2,6 +2,11 @@ class User < ActiveRecord::Base
 
   has_many :tweets, dependent: :delete_all
 
+  has_many :follows,
+    class_name: "Follow",
+    foreign_key: :user_id,
+    primary_key: :id
+
   validates :username, :session_token, presence: true
   validates :password_digest, presence: { message: "Password can't be blank" }
   validates :username, uniqueness: true
