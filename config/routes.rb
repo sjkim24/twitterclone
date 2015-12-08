@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :new, :show]
   resource :session, only: [:create, :new, :destroy]
   resources :tweets, except: [:index, :show]
+  resources :follows, only: [:index, :create, :destroy]
 end
