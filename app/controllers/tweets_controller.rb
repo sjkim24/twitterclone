@@ -1,5 +1,9 @@
 class TweetsController < ApplicationController
 
+  def index
+    @tweets = Tweet.all
+  end
+
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
@@ -29,6 +33,12 @@ class TweetsController < ApplicationController
     else
        flash.now[:errors] = @tweet.errors.full_messages
     end
+  end
+
+  def destroy
+    @tweet = User.find(params[:id])
+    @tweet.destroy
+    redirect_to user_url(current_user.id)
   end
 
   private
