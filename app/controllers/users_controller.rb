@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @all_tweets = Tweet.all
     render :show
   end
 

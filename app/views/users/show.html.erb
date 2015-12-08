@@ -5,6 +5,14 @@
     <input
       type="text"
       name="tweet[tweet]"
-      value="What's happening?">
+      placeholder="What's happening?">
+    <button>Tweet</button>
   </form>
+  <ul>
+    <% @all_tweets.each do |tweet| %>
+      <li>
+        <%= tweet.tweet %> - <%= link_to tweet.user.username, user_url(tweet.user) %></li>
+      </li>
+    <% end %>
+  </ul>
 </div>
