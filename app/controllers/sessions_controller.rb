@@ -16,7 +16,11 @@ class SessionsController < ApplicationController
   end
 
   def new
-    render :new
+    if current_user.nil?
+      render :new
+    else
+      redirect_to user_url(current_user.id)
+    end
   end
 
   def destroy
