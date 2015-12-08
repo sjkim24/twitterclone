@@ -25,23 +25,12 @@
   <a href="#">Followers</a>
   <a href="#">Followings</a>
   <% if current_user.id == @user.id %>
-    <form action="<%= tweets_url %>" method="POST">
-      <%= render "shared/auth_token" %>
-      <input
-        type="text"
-        name="tweet[tweet]"
-        placeholder="What's happening?">
-      <button>Tweet</button>
-    </form>
+    <%= render "tweets/new" %>
   <% end %>
   <ul>
     <% @user_tweets.each do |tweet| %>
       <li>
         <%= tweet.tweet %>
-        <!-- by
-        <a href="<%= user_url(tweet.user) %>">
-          <%= tweet.user.username %>
-        </a> -->
       </li>
     <% end %>
   </ul>

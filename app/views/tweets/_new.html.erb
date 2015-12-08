@@ -1,0 +1,8 @@
+  <form action="<%= tweets_url %>" method="POST">
+    <%= render "shared/auth_token" %>
+    <input
+      type="text"
+      name="tweet[tweet]"
+      placeholder="What's happening?">
+    <button>Tweet</button>
+  </form>

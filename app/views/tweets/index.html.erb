@@ -1,0 +1,13 @@
+<div class="landing-page">
+  <h1>Welcome!</h1>
+  <%= render "tweets/new" %>
+  <ul>
+    <% @tweets.each do |tweet| %>
+      <li><%= tweet.tweet %> by
+        <a href="<%= user_url(tweet.user) %>">
+          <%= tweet.user.username %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>

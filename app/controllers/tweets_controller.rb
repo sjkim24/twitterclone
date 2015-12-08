@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(created_at: :desc)
   end
 
   def create
@@ -9,10 +9,9 @@ class TweetsController < ApplicationController
     @tweet.user_id = current_user.id
 
     if @tweet.save
-      redirect_to user_url(current_user.id)
+      redirect_to(:back)
     else
       flash.now[:errors] = @user.errors.full_messages
-      render :new
     end
   end
 

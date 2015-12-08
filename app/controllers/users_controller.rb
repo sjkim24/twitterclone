@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_tweets = @user.tweets.sort_by { |tweet| tweet.created_at }.reverse
+    @user_tweets = @user.tweets.order(created_at: :desc)
     @following = Follow.where(
       follower_id: current_user.id,
       user_id: @user.id
