@@ -15,8 +15,9 @@
         <button>Follow</button>
       </form>
     <% else %>
-      <form action="<%= follow_url %>" method="DELETE">
+      <form action="<%= follow_url(@following[0].id) %>" method="POST">
         <%= render "shared/auth_token" %>
+        <input type="hidden" name="_method" value="DELETE">
         <button>Unfollow</button>
       </form>
     <% end %>
@@ -36,7 +37,11 @@
   <ul>
     <% @all_tweets.each do |tweet| %>
       <li>
-        <%= tweet.tweet %> - <%= link_to tweet.user.username, user_url(tweet.user) %></li>
+        <%= tweet.tweet %>
+        by
+        <a href="<%= user_url(tweet.user) %>">
+          <%= tweet.user.username %>
+        </a>
       </li>
     <% end %>
   </ul>
