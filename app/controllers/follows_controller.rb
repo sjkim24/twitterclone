@@ -17,6 +17,7 @@ class FollowsController < ApplicationController
 
   def destroy
     @follow = Follow.find(params[:id])
+    fail
     @follow.destroy
   end
 

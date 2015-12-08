@@ -1,18 +1,25 @@
 <div class="user_page">
-  <h1>Welcome <%= @user.username %></h1>
+  <h1><%= @user.username %>'s Tweets</h1>
   <% if current_user.id != @user.id %>
-    <form action="<%= follows_url %>" method="POST">
-      <%= render "shared/auth_token" %>
-      <input
-        type="hidden"
-        name="follow[user_id]"
-        value="<%= current_user.id %>">
-      <input
-        type="hidden"
-        name="follow[follower_id]"
-        value="<%= @user.id %>">
-      <button>Follow</button>
-    </form>
+    <% if @following.empty? %>
+      <form action="<%= follows_url %>" method="POST">
+        <%= render "shared/auth_token" %>
+        <input
+          type="hidden"
+          name="follow[user_id]"
+          value="<%= current_user.id %>">
+        <input
+          type="hidden"
+          name="follow[follower_id]"
+          value="<%= @user.id %>">
+        <button>Follow</button>
+      </form>
+    <% else %>
+      <form action="<%= follow_url %>" method="DELETE">
+        <%= render "shared/auth_token" %>
+        <button>Unfollow</button>
+      </form>
+    <% end %>
   <% end %>
   <a href="#">Followers</a>
   <a href="#">Followings</a>
