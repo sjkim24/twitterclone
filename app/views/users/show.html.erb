@@ -7,11 +7,11 @@
         <input
           type="hidden"
           name="follow[user_id]"
-          value="<%= current_user.id %>">
+          value="<%= @user.id %>">
         <input
           type="hidden"
           name="follow[follower_id]"
-          value="<%= @user.id %>">
+          value="<%= current_user.id %>">
         <button>Follow</button>
       </form>
     <% else %>
@@ -35,13 +35,13 @@
     </form>
   <% end %>
   <ul>
-    <% @all_tweets.each do |tweet| %>
+    <% @user_tweets.each do |tweet| %>
       <li>
         <%= tweet.tweet %>
-        by
+        <!-- by
         <a href="<%= user_url(tweet.user) %>">
           <%= tweet.user.username %>
-        </a>
+        </a> -->
       </li>
     <% end %>
   </ul>

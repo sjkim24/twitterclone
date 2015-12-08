@@ -19,10 +19,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @all_tweets = Tweet.all
+    @user_tweets = @user.tweets
     @following = Follow.where(
-      follower_id: @user.id,
-      user_id: current_user.id
+      follower_id: current_user.id,
+      user_id: @user.id
     )
     render :show
   end
