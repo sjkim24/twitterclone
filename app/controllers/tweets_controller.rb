@@ -1,7 +1,28 @@
 class TweetsController < ApplicationController
 
   def index
-    @tweets = Tweet.all.order(created_at: :desc)
+    @my_tweets = current_user.tweets
+
+    @followings_ids = []
+    @followers_ids = []
+    @followings_tweets = []
+
+    current_user.follows.each do |follow|
+      @followers_ids << User.find(follow.follower_id).id
+    end
+
+    @followings = Follow.where(follower_id: current_user.id)
+
+    @followings.each do |following|
+      @followings_ids << following.user_id
+    end
+
+    @followings_ids.each do |following_id|
+      @followings_tweets << Tweet.where(user_id: following_id)
+    end
+
+    @all_tweets = @my_tweets + @followings_tweets
+    @all_tweets = @all_tweets.flatten.sort_by { |tweet| tweet.created_at }.reverse
   end
 
   def create
@@ -27,6 +48,7 @@ class TweetsController < ApplicationController
 
   def update
     @tweet = Tweet.find(params[:id])
+
     if @tweet.update(tweet_params)
       redirect_to user_url(current_user.id)
     else
