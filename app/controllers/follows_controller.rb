@@ -7,11 +7,6 @@ class FollowsController < ApplicationController
 
   def create
     @follow = Follow.create(follow_params)
-    if @follow.save
-
-    else
-      flash.now[:errors] = @follow.errors.full_messages
-    end
     redirect_to user_url(@follow.user_id)
   end
 
