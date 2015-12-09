@@ -4,12 +4,7 @@ class TweetsController < ApplicationController
     @my_tweets = current_user.tweets
 
     @followings_ids = []
-    @followers_ids = []
     @followings_tweets = []
-
-    current_user.follows.each do |follow|
-      @followers_ids << User.find(follow.follower_id).id
-    end
 
     @followings = Follow.where(follower_id: current_user.id)
 
