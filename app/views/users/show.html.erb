@@ -31,6 +31,13 @@
     <% @user_tweets.each do |tweet| %>
       <li>
         <%= tweet.tweet %>
+        <% if current_user.id == @user.id %>
+          <form action="<%= tweet_url(tweet.id) %>" method="POST">
+            <%= render "shared/auth_token" %>
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Delete</button>
+          </form>
+        <% end %>
       </li>
     <% end %>
   </ul>
