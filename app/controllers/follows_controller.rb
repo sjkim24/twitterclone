@@ -1,25 +1,23 @@
 class FollowsController < ApplicationController
 
   def index
+    @user_id = params[:user_id].to_i
+    
     if params["follows"] == 'followers'
-      @followers_ids = []
-
-      current_user.follows.each do |follow|
-        @followers_ids << User.find(follow.follower_id).id
+      @follower_users = []
+      @followers = Follow.where(user_id: @user_id)
+      @followers.each do |follower|
+        @follower_users << User.find(follower.follower_id)
       end
 
-      fail
       render :followers_index
     else
-      @followings_ids = []
-
-      @followings = Follow.where(follower_id: current_user.id)
-
+      @following_users = []
+      @followings = Follow.where(follower_id: @user_id)
       @followings.each do |following|
-        @followings_ids << following.user_id
+        @following_users << User.find(following.user_id)
       end
 
-      fail
       render :followings_index
     end
   end

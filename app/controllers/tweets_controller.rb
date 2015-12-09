@@ -23,6 +23,7 @@ class TweetsController < ApplicationController
 
     @all_tweets = @my_tweets + @followings_tweets
     @all_tweets = @all_tweets.flatten.sort_by { |tweet| tweet.created_at }.reverse
+    @all_tweets = @all_tweets.flatten
   end
 
   def create

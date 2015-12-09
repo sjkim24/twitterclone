@@ -15,7 +15,7 @@ t9 = Tweet.create(tweet: "tweet #3 from zd", user_id: u4.id)
 t10 = Tweet.create(tweet: "tweet #4 from zd", user_id: u4.id)
 
 f1 = Follow.create(follower_id: u1.id, user_id: u2.id)
-#u2 is following u1<-> u1 has a follower of u2
+#u1 is following u2 <-> u2 has a follower of u1
 f2 = Follow.create(follower_id: u1.id, user_id: u3.id)
 f3 = Follow.create(follower_id: u1.id, user_id: u4.id)
 f4 = Follow.create(follower_id: u2.id, user_id: u3.id)

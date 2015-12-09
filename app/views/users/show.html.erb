@@ -22,8 +22,8 @@
       </form>
     <% end %>
   <% end %>
-  <%= link_to 'Followers', follows_path(:follows => 'followers') %>
-  <%= link_to 'Followings', follows_path(:follows => 'followings') %>
+  <a href="<%= follows_url(user_id: @user.id, follows: 'followers') %>">Followers</a>
+  <a href="<%= follows_url(user_id: @user.id, follows: 'followings') %>">Followings</a>
   <% if current_user.id == @user.id %>
     <%= render "tweets/new" %>
   <% end %>

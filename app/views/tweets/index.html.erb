@@ -2,7 +2,7 @@
   <h1>Welcome!</h1>
   <%= render "tweets/new" %>
   <ul>
-    <% @all_tweets.flatten.each do |tweet| %>
+    <% @all_tweets.each do |tweet| %>
       <li><%= tweet.tweet %> by
         <a href="<%= user_url(tweet.user) %>">
           <%= tweet.user.username %>

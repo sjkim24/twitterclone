@@ -1,1 +1,11 @@
-followings
+<div class="followings">
+  <ul>
+    <% @following_users.each do |following_user| %>
+      <li>
+        <a href="<%= user_url(following_user) %>">
+          <%= following_user.username %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
