@@ -1,0 +1,24 @@
+<a href="<%= tweets_url %>">Home</a>
+<% if !current_user.nil? %>
+  <ul>
+    <li>
+      Logged in as:
+      <a href="<%= user_url(current_user) %>">
+        <%= current_user.username %>
+      </a>
+    </li>
+    <form action="<%= session_url %>" method="POST">
+      <%= render "shared/auth_token" %>
+      <input
+        type="hidden"
+        name="_method"
+        value="delete">
+      <button id="logout">Log Out</button>
+    </form>
+  </ul>
+<% else %>
+  <ul>
+    <li><a href="<%= new_user_url %>">Sign Up</a></li>
+    <li><a href="<%= new_session_url %>">Log In</a></li>
+  </ul>
+<% end %>
