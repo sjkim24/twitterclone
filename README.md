@@ -4,8 +4,8 @@
 Twitter clone using Ruby on Rails and Backbone.js
 
 ## Screenshots
-- [Login](http://imgur.com/vBYXviD)
-- [Landing Page](http://imgur.com/RE1HeAv)
-- [User Page](http://imgur.com/w6bDDw2)
-- [Followers](http://imgur.com/FcxrTLr)
-- [Followings](http://imgur.com/LzsVeuQ)
+- [Login](http://i.imgur.com/vBYXviD.png)
+- [Landing Page](http://i.imgur.com/RE1HeAv.png)
+- [User Page](http://i.imgur.com/w6bDDw2.png)
+- [Followers](http://i.imgur.com/FcxrTLr.png)
+- [Followings](http://i.imgur.com/LzsVeuQ.png)
