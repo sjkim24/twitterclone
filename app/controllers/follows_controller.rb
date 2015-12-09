@@ -1,8 +1,11 @@
 class FollowsController < ApplicationController
 
   def index
-    @follows = Follow.all
-    render :index
+    if params["follows"] == 'followers'
+      render :followers_index
+    else
+      render :followings_index
+    end
   end
 
   def create
