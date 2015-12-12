@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       render :new
     else
       login!(user)
-      redirect_to tweets_url
+      redirect_to root_url
     end
   end
 
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
     if current_user.nil?
       render :new
     else
-      redirect_to user_url(current_user.id)
+      redirect_to root_url
     end
   end
 

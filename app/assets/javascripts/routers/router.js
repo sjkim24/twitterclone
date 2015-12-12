@@ -6,7 +6,13 @@ Twitter.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
+    '': 'tweetsIndex',
     'users/:id': 'userShow'
+  },
+
+  tweetsIndex: function () {
+    var indexView = new Twitter.Views.TweetIndex ();
+    this.$rootEl.html(indexView.render().$el);
   },
 
   userShow: function(id) {
@@ -15,13 +21,7 @@ Twitter.Routers.Router = Backbone.Router.extend({
       model: user
     });
 
-    this._swapView(showView);
-  },
-
-  _swapView: function (view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(showView.render().$el);
   }
 
-})
+});
