@@ -1,1 +1,8 @@
-<%= user.escape("username") %>
+<div class="user_page">
+  <h1><%= user.escape("username") %>'s Tweets</h1>
+  <ul>
+    <% user.tweets().forEach(function(tweet) { %>
+      <li><%= tweet.escape("tweet") %></li>
+    <% }) %>
+  </ul>
+</div>

@@ -7,6 +7,7 @@ Twitter.Views.UserShow = Backbone.View.extend ({
   },
 
   render: function () {
+    debugger;
     // console.log(this.model.get("username"))
     var content = this.template({ user: this.model });
     this.$el.html(content);

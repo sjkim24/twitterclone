@@ -9,7 +9,7 @@ Twitter.Collections.Users = Backbone.Collection.extend ({
     if (user) {
       user.fetch();
     } else {
-      user = new Twitter.Models.User ( {id: id });
+      user = new Twitter.Models.User ({ id: id });
       user.fetch({
         success: function () {
           users.add(user)
