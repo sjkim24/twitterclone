@@ -4,10 +4,13 @@ Twitter.Views.UserShow = Backbone.View.extend ({
   events: {
     "click .delete-tweet": "deleteTweet",
     "click .follow": "followUser",
-    "click .unfollow": "unfollowUser"
+    "click .unfollow": "unfollowUser",
+    "click .followers": "renderFollowers",
+    "click .followings": "renderFollowings"
   },
 
   initialize: function (options) {
+    this.users = options.users;
     this.tweets = options.tweets;
     this.follows = options.follows;
     this.listenTo(this.model, "sync", this.render);
@@ -69,6 +72,19 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     }
 
     return this;
+  },
+
+  renderFollowers: function () {
+    var view = new Twitter.Views.UserFollowers({
+      user: this.model,
+      users: this.users
+    });
+    this.$el.html(view.render().$el);
+  },
+
+  renderFollowings: function () {
+
+
   },
 
   deleteTweet: function (event) {

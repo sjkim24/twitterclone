@@ -19,11 +19,13 @@ Twitter.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function(id) {
+    this.users.fetch();
     this.tweets.fetch();
     this.follows.fetch();
     var user = this.users.getOrFetch(id);
     var view = new Twitter.Views.UserShow ({
       model: user,
+      users: this.users,
       tweets: this.tweets,
       follows: this.follows
     });
