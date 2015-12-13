@@ -8,15 +8,19 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     this.listenTo(this.model, "sync", this.render);
   },
 
-  currentUserId: function () {
-    return Twitter.CurrentUser.id;
+  currentUserCheck: function () {
+    return parseInt(this.model.id) === Twitter.CurrentUser.id;
   },
 
   render: function () {
-    var content = this.template({ user: this.model });
+    var content = this.template({
+      user: this.model ,
+      currentUserCheck: this.currentUserCheck()
+    });
     var tweet = new Twitter.Models.Tweet();
     this.$el.html(content);
-    if (this.currentUserId() === this.model.id) {
+    if (this.currentUserCheck()) {
+      debugger
       var tweetForm = new Twitter.Views.TweetForm ({
         model: tweet,
         collection: this.tweets
