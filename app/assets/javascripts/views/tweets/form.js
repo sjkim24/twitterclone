@@ -31,6 +31,7 @@ Twitter.Views.TweetForm = Backbone.View.extend ({
         //   $(".errors").append(li);
         // }.bind(this));
       }
+
     });
   }
 

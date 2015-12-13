@@ -1,10 +1,11 @@
 <div class="userpage">
   <h1><%= user.escape("username") %>'s Tweets</h1>
-  <button class="follow">
-  <% if (user.escape("following")) { %>
-    Unfollow
-  <% } else { %>
-    Follow
+  <% if (!currentUserCheck) { %>
+    <% if (user.escape("following") === "true") { %>
+      <button class="unfollow">Unfollow</button>
+    <% } else { %>
+      <button class="follow">Follow</button>
+    <% } %>
   <% } %>
   </button>
   <a href="#">Followers</a>

@@ -1,6 +1,7 @@
-class Api::FollowsController < Api::ApplicationController
+class Api::FollowsController < Api::ApiController
 
   def index
+    @follows = Follow.all
     # @user_id = params[:user_id].to_i
     #
     # if params["follows"] == 'followers'
@@ -24,14 +25,14 @@ class Api::FollowsController < Api::ApplicationController
 
   def create
     @follow = Follow.create(follow_params)
-    redirect_to user_url(@follow.user_id)
+    render json: @follow
   end
 
   def destroy
     @follow = Follow.find(params[:id])
     @follower_id = @follow.user_id
     @follow.destroy!
-    redirect_to user_url(@follower_id)
+    render json: @follow
   end
 
   private

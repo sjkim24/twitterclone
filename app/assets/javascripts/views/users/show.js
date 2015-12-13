@@ -3,12 +3,14 @@ Twitter.Views.UserShow = Backbone.View.extend ({
   template: JST["users/show"],
   events: {
     "click .delete-tweet": "deleteTweet",
-    "click .follow": "followOrUnfollow"
+    "click .follow": "followUser",
+    "click .unfollow": "unfollowUser"
   },
 
 
   initialize: function (options) {
     this.tweets = options.tweets;
+    this.follows = options.follows;
     this.listenTo(this.model, "sync", this.render);
   },
 
@@ -16,9 +18,38 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     return parseInt(this.model.id) === Twitter.CurrentUser.id;
   },
 
-  followOrUnfollow: function (event) {
+  followUser: function (event) {
     event.preventDefault;
+    var follow = new Twitter.Models.Follow({
+      "follower_id": Twitter.CurrentUser.id,
+      "user_id": this.model.id
+    });
+    var that = this;
+    follow.save( {}, {
+      success: function () {
+        that.follows.add(follow, { merge: true });
+        Backbone.history.loadUrl(Backbone.history.fragment);
+      },
 
+      error: function (model, response) {
+        alert("error")
+      }
+
+    });
+
+  },
+
+  unfollowUser: function (event) {
+    event.preventDefault;
+    var follow = this.follows.findWhere({
+      "follower_id": Twitter.CurrentUser.id,
+      "user_id": this.model.id
+    });
+    follow.destroy({
+      success: function () {
+        Backbone.history.loadUrl(Backbone.history.fragment);
+      }
+    });
   },
 
   render: function () {

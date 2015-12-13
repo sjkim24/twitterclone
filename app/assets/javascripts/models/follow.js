@@ -1,4 +1,4 @@
-Twitter.Models.Follows = Backbone.Model.extend ({
+Twitter.Models.Follow = Backbone.Model.extend ({
 
   urlRoot: "/api/follows",
 
