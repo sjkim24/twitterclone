@@ -28,6 +28,10 @@ class Api::FollowsController < Api::ApiController
     render json: @follow
   end
 
+  def show
+
+  end
+
   def destroy
     @follow = Follow.find(params[:id])
     @follower_id = @follow.user_id
