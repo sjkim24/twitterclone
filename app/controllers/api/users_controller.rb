@@ -8,6 +8,10 @@ class Api::UsersController < Api::ApiController
       user_id: @user.id
     )
     @follow ? @following = true : @following = false
+
+    @followings = @user.followings
+    @followers = @user.followers
+
     render :show
   end
 

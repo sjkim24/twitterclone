@@ -7,7 +7,6 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     "click .unfollow": "unfollowUser"
   },
 
-
   initialize: function (options) {
     this.tweets = options.tweets;
     this.follows = options.follows;
@@ -34,9 +33,7 @@ Twitter.Views.UserShow = Backbone.View.extend ({
       error: function (model, response) {
         alert("error")
       }
-
     });
-
   },
 
   unfollowUser: function (event) {
@@ -48,6 +45,10 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     follow.destroy({
       success: function () {
         Backbone.history.loadUrl(Backbone.history.fragment);
+      },
+
+      error: function () {
+        alert("error")
       }
     });
   },

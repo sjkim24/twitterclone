@@ -21,6 +21,7 @@ class Api::FollowsController < Api::ApiController
     #
     #   render :followings_index
     # end
+    render :index
   end
 
   def create
@@ -29,7 +30,10 @@ class Api::FollowsController < Api::ApiController
   end
 
   def show
+    @follow = Follow.find(params[:id])
+    @user_id = params[:user_id].to_i
 
+    render :show
   end
 
   def destroy
