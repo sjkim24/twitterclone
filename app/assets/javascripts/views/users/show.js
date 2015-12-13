@@ -16,7 +16,8 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     return parseInt(this.model.id) === Twitter.CurrentUser.id;
   },
 
-  followOrUnfollow: function () {
+  followOrUnfollow: function (event) {
+    event.preventDefault;
 
   },
 
