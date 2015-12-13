@@ -1,7 +1,6 @@
 class Api::TweetsController < Api::ApiController
 
   def index
-
   end
 
   def create
@@ -9,10 +8,15 @@ class Api::TweetsController < Api::ApiController
     @tweet.user_id = current_user.id
 
     if @tweet.save
-      render :show
+      render json: @tweet
     else
       render json: @tweet.errors.full_messages, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @tweet = Tweet.find(params[:id])
+    render :show
   end
 
   def destroy

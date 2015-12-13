@@ -2,15 +2,20 @@ Twitter.Views.UserShow = Backbone.View.extend ({
 
   template: JST["users/show"],
 
-  initialize: function () {
-    this.listenTo(this.model, 'sync', this.render);
+  initialize: function (options) {
+    this.tweets = options.tweets;
+    this.listenTo(this.model, "sync", this.render);
   },
 
   render: function () {
-    debugger;
-    // console.log(this.model.get("username"))
     var content = this.template({ user: this.model });
+    var tweet = new Twitter.Models.Tweet();
+    var tweetForm = new Twitter.Views.TweetForm ({
+      model: tweet,
+      collection: this.tweets
+    });
     this.$el.html(content);
+    this.$(".tweetform").append(tweetForm.render().$el);
 
     return this;
   }
