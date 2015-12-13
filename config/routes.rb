@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:show]
-    resources :tweets, only: [:create, :index, :show]
+    resources :tweets, only: [:create, :index, :show, :destroy]
     resources :follows, only: [:index, :create, :new, :destroy]
     resource :current_user, only: [:show]
   end

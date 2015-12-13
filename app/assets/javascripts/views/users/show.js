@@ -19,8 +19,7 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     if (this.currentUserId() === this.model.id) {
       var tweetForm = new Twitter.Views.TweetForm ({
         model: tweet,
-        collection: this.tweets,
-        user: this.model
+        collection: this.tweets
       });
       this.$(".tweetform").append(tweetForm.render().$el);
     }
@@ -30,12 +29,13 @@ Twitter.Views.UserShow = Backbone.View.extend ({
 
   deleteTweet: function (event) {
     event.preventDefault();
-    debugger
-    // this.model.destroy({
-    //   success: function () {
-    //     alert("sucess")
-    //   }
-    // });
+    var id = parseInt(event.currentTarget.id);
+    var tweet = this.tweets.get(id)
+    tweet.destroy({
+      success: function () {
+        Backbone.history.loadUrl(Backbone.history.fragment);
+      }
+    });
   }
 
 });
