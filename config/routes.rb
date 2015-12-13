@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     resources :tweets, only: [:create, :index, :show]
     resources :follows, only: [:index, :create, :new, :destroy]
+    resource :current_user, only: [:show]
   end
 end
