@@ -6,10 +6,15 @@ window.Twitter = {
   Routers: {},
 
   initialize: function () {
-    new Twitter.Routers.Router ({
-      $rootEl: $('#main')
+    Twitter.CurrentUser = new Twitter.Models.CurrentUser();
+    Twitter.CurrentUser.fetch({
+      success: function () {
+        new Twitter.Routers.Router ({
+          $rootEl: $('#main')
+        });
+        Backbone.history.start();
+      }
     });
-    Backbone.history.start();
   }
 };
 
