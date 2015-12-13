@@ -1,7 +1,11 @@
 Twitter.Views.UserShow = Backbone.View.extend ({
 
   template: JST["users/show"],
-  events: {"click .delete-tweet": "deleteTweet" },
+  events: {
+    "click .delete-tweet": "deleteTweet",
+    "click .follow": "followOrUnfollow"
+  },
+
 
   initialize: function (options) {
     this.tweets = options.tweets;
@@ -12,15 +16,18 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     return parseInt(this.model.id) === Twitter.CurrentUser.id;
   },
 
+  followOrUnfollow: function () {
+
+  },
+
   render: function () {
     var content = this.template({
-      user: this.model ,
+      user: this.model,
       currentUserCheck: this.currentUserCheck()
     });
     var tweet = new Twitter.Models.Tweet();
     this.$el.html(content);
     if (this.currentUserCheck()) {
-      debugger
       var tweetForm = new Twitter.Views.TweetForm ({
         model: tweet,
         collection: this.tweets

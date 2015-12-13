@@ -1,5 +1,14 @@
 <div class="userpage">
   <h1><%= user.escape("username") %>'s Tweets</h1>
+  <button class="follow">
+  <% if (user.escape("following")) { %>
+    Unfollow
+  <% } else { %>
+    Follow
+  <% } %>
+  </button>
+  <a href="#">Followers</a>
+  <a href="#">Followings</a>
   <form class="tweetform"></form>
   <ul>
     <% user.tweets().forEach(function(tweet) { %>
