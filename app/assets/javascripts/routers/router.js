@@ -12,17 +12,18 @@ Twitter.Routers.Router = Backbone.Router.extend({
   },
 
   tweetsIndex: function () {
+    this.tweets.fetch();
     var indexView = new Twitter.Views.TweetIndex ();
     this.$rootEl.html(indexView.render().$el);
   },
 
   userShow: function(id) {
     var user = this.users.getOrFetch(id);
-    var showView = new Twitter.Views.UserShow ({
+    var view = new Twitter.Views.UserShow ({
       model: user,
       tweets: this.tweets
     });
-    this.$rootEl.html(showView.render().$el);
+    this.$rootEl.html(view.render().$el);
   }
 
 });

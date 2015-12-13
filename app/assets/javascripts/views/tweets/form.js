@@ -5,6 +5,7 @@ Twitter.Views.TweetForm = Backbone.View.extend ({
   events: { "click .submit-tweet": "submitTweet" },
 
   initialize: function (options) {
+    this.user = options.user
   },
 
   render: function () {
@@ -18,11 +19,11 @@ Twitter.Views.TweetForm = Backbone.View.extend ({
     event.preventDefault();
     var attrs = this.$el.serializeJSON().tweet;
     this.model.set(attrs);
+    var that = this;
     this.model.save( {}, {
       success: function () {
-        alert("SUCCESS")
-        // that.collection.add(that.model, { merge: true });
-        // Backbone.history.navigate("users/" +)
+        that.collection.add(that.model, { merge: true });
+        Backbone.history.loadUrl(Backbone.history.fragment);
       },
 
       error: function (model, response) {

@@ -3,7 +3,10 @@
   <form class="tweetform"></form>
   <ul>
     <% user.tweets().forEach(function(tweet) { %>
-      <li><%= tweet.escape("tweet") %></li>
+      <li>
+        <%= tweet.escape("tweet") %>
+        <button class="delete-tweet" id=<%= tweet.id %>>Delete</button>
+      </li>
     <% }) %>
   </ul>
 </div>

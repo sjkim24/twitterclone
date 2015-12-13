@@ -1,6 +1,9 @@
 class Api::TweetsController < Api::ApiController
 
   def index
+    @tweets = Tweet.all
+
+    render :index
   end
 
   def create
