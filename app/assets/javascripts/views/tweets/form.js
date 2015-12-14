@@ -5,10 +5,8 @@ Twitter.Views.TweetForm = Backbone.View.extend ({
   events: { "click .submit-tweet": "submitTweet" },
 
   render: function () {
-    $(".errors").empty();
     var content = this.template();
     this.$el.html(content);
-
     return this;
   },
 

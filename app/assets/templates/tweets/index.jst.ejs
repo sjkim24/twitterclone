@@ -1,1 +1,13 @@
-landing page
+<div class="landing-page">
+  <h1>Welcome <%= Twitter.CurrentUser.escape("username") %></h1>
+  <form class="tweetform"></form>
+  <ul>
+    <% tweets.forEach(function(tweet) { %>
+      <li>
+        <%= tweet.escape("tweet") %> -
+        <a href="#/users/<%= tweet.escape("user_id") %>"><%= tweet.escape("username") %></a>
+      </li>
+    <% }) %>
+  </ul>
+
+</div>

@@ -47,6 +47,7 @@ Twitter.Views.UserShow = Backbone.View.extend ({
   },
 
   render: function () {
+    $(".errors").empty();
     var content = this.template({
       user: this.model,
       currentUserCheck: this.currentUserCheck()

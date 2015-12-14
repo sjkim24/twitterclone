@@ -16,7 +16,9 @@ Twitter.Routers.Router = Backbone.Router.extend({
 
   tweetsIndex: function () {
     this.tweets.fetch();
-    var indexView = new Twitter.Views.TweetIndex ();
+    var indexView = new Twitter.Views.TweetIndex ({
+      tweets: this.tweets
+    });
     this.$rootEl.html(indexView.render().$el);
   },
 
