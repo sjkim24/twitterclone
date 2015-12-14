@@ -83,8 +83,11 @@ Twitter.Views.UserShow = Backbone.View.extend ({
   },
 
   renderFollowings: function () {
-
-
+    var view = new Twitter.Views.UserFollowings({
+      user: this.model,
+      users: this.users
+    });
+    this.$el.html(view.render().$el);
   },
 
   deleteTweet: function (event) {

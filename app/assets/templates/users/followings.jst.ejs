@@ -1,0 +1,10 @@
+<h2><%= user.escape("username") %>'s Followings</h2>
+<ul>
+  <% followings.forEach(function(following) { %>
+      <li>
+        <a href="/#/users/<%= following.escape("id") %>">
+          <%= following.escape("username") %>
+        </a>
+      </li>
+  <% }) %>
+</ul>

@@ -21,7 +21,7 @@ Twitter.Views.UserFollowers = Backbone.View.extend ({
     var content = this.template({
       user: this.user,
       followers: this.getFollowers()
-    })
+    });
     this.$el.html(content);
 
     return this;
