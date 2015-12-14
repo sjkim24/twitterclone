@@ -16,10 +16,10 @@ Twitter.Routers.Router = Backbone.Router.extend({
 
   tweetsIndex: function () {
     this.tweets.fetch();
-    var indexView = new Twitter.Views.TweetIndex ({
+    var view = new Twitter.Views.TweetIndex ({
       tweets: this.tweets
     });
-    this.$rootEl.html(indexView.render().$el);
+    this._swapView(view);
   },
 
   userShow: function (id) {
@@ -33,7 +33,7 @@ Twitter.Routers.Router = Backbone.Router.extend({
       tweets: this.tweets,
       follows: this.follows
     });
-    this.$rootEl.html(view.render().$el);
+    this._swapView(view);
   },
 
   userFollowers: function (id) {
@@ -43,7 +43,7 @@ Twitter.Routers.Router = Backbone.Router.extend({
       user: user,
       users: this.users
     });
-    this.$rootEl.html(view.render().$el);
+    this._swapView(view);
   },
 
   userFollowings: function (id) {
@@ -53,6 +53,12 @@ Twitter.Routers.Router = Backbone.Router.extend({
       user: user,
       users: this.users
     });
+    this._swapView(view);
+  },
+
+  _swapView: function (view) {
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
     this.$rootEl.html(view.render().$el);
   }
 

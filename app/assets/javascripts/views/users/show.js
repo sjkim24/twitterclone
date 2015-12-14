@@ -61,7 +61,6 @@ Twitter.Views.UserShow = Backbone.View.extend ({
       });
       this.$(".tweetform").append(tweetForm.render().$el);
     }
-
     return this;
   },
 

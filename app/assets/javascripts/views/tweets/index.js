@@ -9,7 +9,6 @@ Twitter.Views.TweetIndex = Backbone.View.extend ({
 
   render: function () {
     $(".errors").empty();
-    console.log("render")
     var content = this.template({
       tweets: this.tweets
     });
