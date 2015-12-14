@@ -29,10 +29,6 @@ Twitter.Views.UserShow = Backbone.View.extend ({
       success: function () {
         that.follows.add(follow, { merge: true });
         Backbone.history.loadUrl(Backbone.history.fragment);
-      },
-
-      error: function (model, response) {
-        alert("error")
       }
     });
   },
@@ -46,10 +42,6 @@ Twitter.Views.UserShow = Backbone.View.extend ({
     follow.destroy({
       success: function () {
         Backbone.history.loadUrl(Backbone.history.fragment);
-      },
-
-      error: function () {
-        alert("error")
       }
     });
   },

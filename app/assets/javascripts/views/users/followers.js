@@ -19,7 +19,6 @@ Twitter.Views.UserFollowers = Backbone.View.extend ({
   },
 
   render: function () {
-    console.log("render")
     var content = this.template({
       user: this.user,
       followers: this.getFollowers()

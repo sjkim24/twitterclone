@@ -5,6 +5,7 @@ Twitter.Views.TweetForm = Backbone.View.extend ({
   events: { "click .submit-tweet": "submitTweet" },
 
   render: function () {
+    $(".errors").empty();
     var content = this.template();
     this.$el.html(content);
 
@@ -23,13 +24,12 @@ Twitter.Views.TweetForm = Backbone.View.extend ({
       },
 
       error: function (model, response) {
-        alert("error")
-        // $(".errors").empty();
-        // response.responseJSON.forEach(function(el) {
-        //   var li = $("<li></li>");
-        //   li.html(el);
-        //   $(".errors").append(li);
-        // }.bind(this));
+        $(".errors").empty();
+        response.responseJSON.forEach(function(error) {
+          var li = $("<li></li>");
+          li.html(error);
+          $(".errors").append(li);
+        });
       }
 
     });
