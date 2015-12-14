@@ -2,25 +2,7 @@ class Api::FollowsController < Api::ApiController
 
   def index
     @follows = Follow.all
-    # @user_id = params[:user_id].to_i
-    #
-    # if params["follows"] == 'followers'
-    #   @follower_users = []
-    #   @followers = Follow.where(user_id: @user_id)
-    #   @followers.each do |follower|
-    #     @follower_users << User.find(follower.follower_id)
-    #   end
-    #
-    #   render :followers_index
-    # else
-    #   @following_users = []
-    #   @followings = Follow.where(follower_id: @user_id)
-    #   @followings.each do |following|
-    #     @following_users << User.find(following.user_id)
-    #   end
-    #
-    #   render :followings_index
-    # end
+
     render :index
   end
 
@@ -29,12 +11,6 @@ class Api::FollowsController < Api::ApiController
     render json: @follow
   end
 
-  def show
-    @follow = Follow.find(params[:id])
-    @user_id = params[:user_id].to_i
-
-    render :show
-  end
 
   def destroy
     @follow = Follow.find(params[:id])

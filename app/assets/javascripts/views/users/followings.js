@@ -5,7 +5,7 @@ Twitter.Views.UserFollowings = Backbone.View.extend ({
   initialize: function (options) {
     this.user = options.user;
     this.users = options.users;
-    this.getFollowings()
+    this.listenTo(this.user, "sync", this.render);
   },
 
   getFollowings: function () {

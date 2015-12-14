@@ -1,9 +1,9 @@
-<a href="<%= root_url %>">Home</a>
+<a href="#">Home</a>
 <% if !current_user.nil? %>
   <ul>
     <li>
       Logged in as:
-      <a href="/#/users/<%= current_user.id %>">
+      <a href="#users/<%= current_user.id %>">
         <%= current_user.username %>
       </a>
     </li>

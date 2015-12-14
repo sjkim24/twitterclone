@@ -5,6 +5,7 @@ Twitter.Views.UserFollowers = Backbone.View.extend ({
   initialize: function (options) {
     this.user = options.user;
     this.users = options.users;
+    this.listenTo(this.user, "sync", this.render);
   },
 
   getFollowers: function () {
@@ -18,6 +19,7 @@ Twitter.Views.UserFollowers = Backbone.View.extend ({
   },
 
   render: function () {
+    console.log("render")
     var content = this.template({
       user: this.user,
       followers: this.getFollowers()

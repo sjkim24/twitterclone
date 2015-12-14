@@ -8,8 +8,8 @@
     <% } %>
   <% } %>
   </button>
-  <button class="followers">Followers</button>
-  <button class="followings">Followings</button>
+  <a href="#users/<%= user.escape("id") %>/followers">Followers</a>
+  <a href="#users/<%= user.escape("id") %>/followings">Followings</a>
   <form class="tweetform"></form>
   <ul>
     <% user.tweets().forEach(function(tweet) { %>
