@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209194438) do
+ActiveRecord::Schema.define(version: 20151230215623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20151209194438) do
   end
 
   add_index "follows", ["follower_id", "user_id"], name: "index_follows_on_follower_id_and_user_id", unique: true, using: :btree
+
+  create_table "retweets", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "tweet_id",   null: false
+    t.text     "comment",    null: false
+    t.text     "tweets",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.text     "tweet",      null: false
